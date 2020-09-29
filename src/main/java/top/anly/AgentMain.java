@@ -2,11 +2,8 @@ package top.anly;
 
 import javassist.*;
 import lombok.Data;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
 import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
 import java.security.ProtectionDomain;
 
@@ -25,7 +22,6 @@ public class AgentMain {
         final ClassPool classPool = new ClassPool();
         classPool.appendSystemPath();
         instrumentation.addTransformer(new ClassFileTransformer() {
-            @Override
             public byte[] transform(ClassLoader loader,
                                     String className,
                                     Class<?> classBeingRedefined,
