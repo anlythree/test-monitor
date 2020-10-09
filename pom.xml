@@ -53,10 +53,12 @@
             <version>1.1.2</version>
         </dependency>
 
+
+
     </dependencies>
     <build>
         <plugins>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
@@ -69,13 +71,12 @@
                             <Premain-Class>top.anly.AgentMain</Premain-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
-                            <Boot-Class-Path>javassist-3.18.1-GA.jar</Boot-Class-Path>
+<!--                            <Boot-Class-Path>javassist-3.18.1-GA.jar</Boot-Class-Path>-->
                         </manifestEntries>
                     </archive>
                     <skip>true</skip>
                 </configuration>
-            </plugin>-->
-
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -103,14 +104,14 @@
                 </executions>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <source>8</source>-->
-<!--                    <target>8</target>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
 
 
         </plugins>

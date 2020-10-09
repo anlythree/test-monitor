@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TestLocal {
 
-    public static void print1(){
+    public static void print1() {
         System.out.println(1);
     }
 
@@ -18,4 +18,6 @@ public class TestLocal {
         print1();
         log.info("测试");
     }
+
+
 }
