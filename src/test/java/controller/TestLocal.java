@@ -15,9 +15,10 @@ public class TestLocal {
     }
 
     public static void main(String[] args) {
-        print1();
-        log.info("测试");
+
     }
+
+
 
 
 }

@@ -53,34 +53,48 @@
             <version>1.1.2</version>
         </dependency>
 
-
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>2.4</version>-->
+<!--                <configuration>-->
+
+<!--                    <archive>-->
+<!--                        <manifestEntries>-->
+<!--                            <Project-name>${project.name}</Project-name>-->
+<!--                            <Project-version>${project.version}</Project-version>-->
+<!--                            <Premain-Class>top.anly.AgentMain</Premain-Class>-->
+<!--                            <Can-Redefine-Classes>true</Can-Redefine-Classes>-->
+<!--                            <Can-Retransform-Classes>true</Can-Retransform-Classes>-->
+<!--&lt;!&ndash;                            <Boot-Class-Path>javassist-3.18.1-GA.jar</Boot-Class-Path>&ndash;&gt;-->
+<!--                        </manifestEntries>-->
+<!--                    </archive>-->
+<!--                    <skip>true</skip>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-
-                    <archive>
-                        <manifestEntries>
-                            <Project-name>${project.name}</Project-name>
-                            <Project-version>${project.version}</Project-version>
-                            <Premain-Class>top.anly.AgentMain</Premain-Class>
-                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
-                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
-<!--                            <Boot-Class-Path>javassist-3.18.1-GA.jar</Boot-Class-Path>-->
-                        </manifestEntries>
-                    </archive>
-                    <skip>true</skip>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>utf-8</encoding>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>1.4</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -91,12 +105,16 @@
                             <artifactSet>
                                 <includes>
                                     <include>org.javassist:javassist</include>
+                                    <include>javax.servlet:javax.servlet-api</include>
                                 </includes>
                             </artifactSet>
                             <transformers>
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>top.anly.AgentMain</mainClass>
+                                    <manifestEntries>
+                                        <Main-Class>top.anly.AgentMain</Main-Class>
+                                        <Premain-Class>top.anly.AgentMain</Premain-Class>
+                                    </manifestEntries>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -104,14 +122,7 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
+
 
 
         </plugins>

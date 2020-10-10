@@ -1,3 +1,5 @@
 top\anly\AgentMain.class
-top\anly\AgentMain$1.class
+top\anly\domain\MonitorBean.class
+top\anly\collect\HttpCollect$1.class
 top\anly\controller\Test111controller.class
+top\anly\collect\HttpCollect.class

@@ -7,24 +7,16 @@
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
+        <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <archive>
-            <manifestEntries>
-              <Project-name>${project.name}</Project-name>
-              <Project-version>${project.version}</Project-version>
-              <Premain-Class>top.anly.AgentMain</Premain-Class>
-              <Can-Redefine-Classes>true</Can-Redefine-Classes>
-              <Can-Retransform-Classes>true</Can-Retransform-Classes>
-            </manifestEntries>
-          </archive>
-          <skip>true</skip>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>utf-8</encoding>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>1.4</version>
+        <version>3.0.0</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -35,23 +27,20 @@
               <artifactSet>
                 <includes>
                   <include>org.javassist:javassist</include>
+                  <include>javax.servlet:javax.servlet-api</include>
                 </includes>
               </artifactSet>
               <transformers>
                 <transformer>
-                  <mainClass>top.anly.AgentMain</mainClass>
+                  <manifestEntries>
+                    <Main-Class>top.anly.AgentMain</Main-Class>
+                    <Premain-Class>top.anly.AgentMain</Premain-Class>
+                  </manifestEntries>
                 </transformer>
               </transformers>
             </configuration>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>8</source>
-          <target>8</target>
-        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -79,6 +68,12 @@
       <artifactId>logback-core</artifactId>
       <version>1.1.2</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <properties>
