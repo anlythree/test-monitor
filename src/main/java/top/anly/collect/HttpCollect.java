@@ -81,7 +81,7 @@ public class HttpCollect {
                     return null;
                 }
                 try {
-                    System.out.println("检测到HttpServlet类，并开始修改");
+                    System.out.println("成功加入http的监控");
                     return build(loader);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -114,6 +114,7 @@ public class HttpCollect {
 
     public static MonitorBean begin(Object args[]) {
         HttpServletRequest httpServletRequest = (HttpServletRequest) args[0];
+        ClassLoader classLoader = args[0].getClass().getClassLoader();
         MonitorBean monitorBean = new MonitorBean();
         monitorBean.setBeginTime(LocalDateTime.now());
         monitorBean.setUrl(httpServletRequest.getRequestURI());
